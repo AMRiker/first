@@ -9,27 +9,22 @@ function isAgeValid($age)
 	}
 }
 
-//объявили переменные согласно типов вводимых данных
-$login =
-$password=$_POST["password"];
-$username=$_POST["username"];
-$confirm_password=$_POST["confirm_password"];
-$age=$_POST["age"];
-$sex=$_POST["sex"];
+function fill($user, $login, $username, $password, $confirmPassword, $age, $sex)
+{
+	$user->login = $login;
+	$user->username = $username;
+	$user->password = $password;
+	$user->confirmPassword = $confirmPassword;
+	$user->age = $age;
+	$user->sex = $sex;
+
+	return $user;
+}
 
 require __DIR__ . '/User.php';
 $useOne = new User();
-
-echo '<pre>';
-var_dump($useOne);
-echo '</pre>';
-
-$useOne->login = $_POST["login"];
-$useOne->username = $_POST["username"];
-$useOne->password = $_POST["password"];
-$useOne->confirmPassword = $_POST["confirm_password"];
-$useOne->age = $_POST["age"];
-$useOne->sex = $_POST["sex"];
+fill($useOne, $_POST["login"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["age"], $_POST["sex"]);
+//$useOne = fill($useOne, $_POST["login"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["age"], $_POST["sex"]);
 
 echo '<pre>';
 var_dump($useOne);
@@ -38,6 +33,8 @@ echo '</pre>';
 
 
 //второй комплект переменых
+
+$userTwo = new User();
 
 $login1 = $_POST["login1"];
 $password1=$_POST["password1"];
@@ -52,10 +49,10 @@ $sex1=$_POST["sex1"];
 
 
 //теперь добавим проверку на возраст
-isAgeValid($age);
+isAgeValid($useOne->age);
 
 //проверка длины пароля
-if (strlen($password) < 3) {
+if (strlen($useOne->password) < 3) {
 	header('Location: short.php');
  	exit();
 }
