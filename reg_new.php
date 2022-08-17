@@ -1,4 +1,14 @@
 <?php
+function isAgeValid($age)
+{
+	if ($age < 18) {
+		echo 'access denied';
+		return false;
+	} else {
+		return true;
+	}
+}
+
 $login='';
 $password='';
 $username='';
@@ -27,34 +37,36 @@ $sex1=$_POST["sex1"];
 
 
 //теперь добавим проверку на возраст
-if ($age < 18) {
-	echo 'access denied';
- 	exit();}
+isAgeValid($age);
+
 //проверка длины пароля
 if (strlen($password) < 3) {
 	header('Location: short.php');
- 	exit();}
+ 	exit();
+}
 
 //проверка совпадения пароля
 if ($password != $confirm_password) {
 	header('Location: nonpsw.php');
- 	exit();}
+ 	exit();
+}
 
 //добавим проверку второго комплекта переменных
 
 //теперь добавим проверку на возраст
-if ($age1 < 18) {
-	echo 'access denied';
- 	exit();}
+isAgeValid($age1);
+
 //проверка длины пароля
 if (strlen($password1) < 3) {
 	header('Location: short.php');
- 	exit();}
+ 	exit();
+}
 
 //проверка совпадения пароля
 if ($password1 != $confirm_password1) {
 	header('Location: nonpsw.php');
- 	exit();}
+ 	exit();
+}
 
 // Параметры для подключения
 // инициализируем ряд переменных для подключения к базе sql
