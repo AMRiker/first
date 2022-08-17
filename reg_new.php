@@ -9,22 +9,8 @@ function isAgeValid($age)
 	}
 }
 
-function fill($user, $login, $username, $password, $confirmPassword, $age, $sex)
-{
-	$user->login = $login;
-	$user->username = $username;
-	$user->password = $password;
-	$user->confirmPassword = $confirmPassword;
-	$user->age = $age;
-	$user->sex = $sex;
-
-	return $user;
-}
-
 require __DIR__ . '/User.php';
-$useOne = new User();
-fill($useOne, $_POST["login"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["age"], $_POST["sex"]);
-//$useOne = fill($useOne, $_POST["login"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["age"], $_POST["sex"]);
+$useOne = new User($_POST["login"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["age"], $_POST["sex"]);
 
 echo '<pre>';
 var_dump($useOne);
@@ -34,14 +20,7 @@ echo '</pre>';
 
 //второй комплект переменых
 
-$userTwo = new User();
-
-$login1 = $_POST["login1"];
-$password1=$_POST["password1"];
-$username1=$_POST["username1"];
-$confirm_password1=$_POST["confirm_password1"];
-$age1=$_POST["age1"];
-$sex1=$_POST["sex1"];
+$userTwo = new User($_POST["login1"], $_POST["username1"], $_POST["password1"], $_POST["confirm_password1"], $_POST["age1"], $_POST["sex1"]);
 
 
 // если я правильно понял что нужные переменные получили
