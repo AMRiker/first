@@ -9,18 +9,33 @@ function isAgeValid($age)
 	}
 }
 
-$login='';
-$password='';
-$username='';
-$age=0;
-$sex='';
 //объявили переменные согласно типов вводимых данных
-$login = $_POST["login"];
+$login =
 $password=$_POST["password"];
 $username=$_POST["username"];
 $confirm_password=$_POST["confirm_password"];
 $age=$_POST["age"];
 $sex=$_POST["sex"];
+
+require __DIR__ . '/User.php';
+$useOne = new User();
+
+echo '<pre>';
+var_dump($useOne);
+echo '</pre>';
+
+$useOne->login = $_POST["login"];
+$useOne->username = $_POST["username"];
+$useOne->password = $_POST["password"];
+$useOne->confirmPassword = $_POST["confirm_password"];
+$useOne->age = $_POST["age"];
+$useOne->sex = $_POST["sex"];
+
+echo '<pre>';
+var_dump($useOne);
+var_dump(__DIR__);
+echo '</pre>';
+
 
 //второй комплект переменых
 
