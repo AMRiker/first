@@ -40,7 +40,7 @@ function connect_to_bd(){
 }
 //создаем функцию для внесения данных учетной записи в таблицу
 
-function wr_to_users1()
+function wr_to_users1($New_user)
 {
 
 // Параметры для подключения
@@ -65,7 +65,7 @@ var_dump($users_data);
 
 if ($New_user->valid_data()){
 	connect_to_bd();
-	wr_to_users1();
+	wr_to_users1($New_user);
 }
 else{
 	header('Location reg_error.php' );
