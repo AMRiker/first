@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/User.php';
+require_once  __DIR__ . '/User.php';
 //создаем ноывый объект типа user
 $user = new User ($_POST["login"],$_POST["password"],$_POST["confirm_password"],
 	$_POST["username"],$_POST["age"],$_POST["sex"]);
@@ -74,12 +74,12 @@ function wrToUsers1($user, $db)
 
 }
 
-if ($user->valid_data()){
+if ($user->valid_data()) {
 	$db = connectToBd();
 	wrToUsers1($user, $db);
 }
-else{
-	header('Location reg_error.php' );
+else {
+	include __DIR__ . '/reg_error.php';
 }
 ?>
 
