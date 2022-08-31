@@ -27,6 +27,7 @@ function connect_to_bd(){
 		$db->exec("set names utf8");
 		$result = true;
 
+
 	} catch (PDOException $e) {
 
 		// Если есть ошибка соединения, выводим её, каюсь, грешен, что за функция getmessage особо не вдавался,
@@ -36,11 +37,15 @@ function connect_to_bd(){
 	}
 
 	if ($result) {
-		echo 'your data sent in SQL database see your table';}
+		echo 'your data sent in SQL database see your table';
+		return $db;}
+	else {
+		return NULL;
+	}
 }
 //создаем функцию для внесения данных учетной записи в таблицу
 
-function wr_to_users1($New_user)
+function wr_to_users1($New_user, $db)
 {
 
 // Параметры для подключения
@@ -56,7 +61,7 @@ var_dump($users_data);
 //где ключи это имя полей, а значения взяты из переменных формы
 //теперь формируем запрос в базу
 
-	$query = $db->prepare ("INSERT INTO $db_table (login, password, name, age, sex) values (:login, :password, :name, :age, :sex)");
+	$query = $db->prepare ("INSERT INTO user (login, password, name, age, sex) values (:login, :password, :name, :age, :sex)");
 
 // Выполняем запрос с данными
 	$query->execute($users_data);
@@ -64,8 +69,8 @@ var_dump($users_data);
 }
 
 if ($New_user->valid_data()){
-	connect_to_bd();
-	wr_to_users1($New_user);
+	$db = connect_to_bd();
+	wr_to_users1($New_user, $db);
 }
 else{
 	header('Location reg_error.php' );
