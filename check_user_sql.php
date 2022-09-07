@@ -1,26 +1,9 @@
 <?php
+require_once  __DIR__ . '/Connect.php';
 $login = $_POST["login"];
 $password=$_POST["password"];
-
-$dbHost = "localhost";
-$dbUser = "root"; // Логин БД
-$dbPassword = "root"; // Пароль БД
-$dbBase = 'users1'; // Имя БД
-$dbTable = "user"; // Имя Таблицы БД
-
-try {
-	$db = new PDO("mysql:host=$dbHost;dbname=$dbBase", $dbUser, $dbPassword);
-	$db->exec("set names utf8");
-	$result  = true;
-}
-
-catch (PDOException $e) {
-	print "Error " . $e->getMessage() . "<br/>";
-}
-
-if ($result) { 
-	echo 'подключение удалось';
-}
+$connect = new Connect();
+$db = $connect->connectToBd();
 $checkUser = $db -> prepare("SELECT * FROM user WHERE login=:login");
 $checkUser->bindParam("login", $login, PDO::PARAM_STR);
 $checkUser->execute();
