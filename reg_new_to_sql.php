@@ -2,9 +2,15 @@
 require_once  __DIR__ . '/User.php';
 require_once  __DIR__ . '/Connect.php';
 //создаем ноывый объект типа user
-$user = new User ($_POST["login"],$_POST["password"],$_POST["confirm_password"],
-	$_POST["username"],$_POST["age"],$_POST["sex"]);
-
+$user = new User ();
+$user-> fill(
+	$_POST["login"],
+	$_POST["password"],
+	$_POST["confirm_password"],
+	$_POST["username"],
+	$_POST["age"],
+	$_POST["sex"]
+);
 	// если я правильно понял что нужные переменные получили
 	// из формы регистрации свои значения в квадратных скобках и сразу попали в класс
 	//echo '<pre>';
