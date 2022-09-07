@@ -1,15 +1,15 @@
 <?php
 class User
 {
-	public $login='';
-	public $password='';
-	public $confirmPassword='';
-	public $username='';
-	public $age=0;
-	public $sex='';
-	public $invalidPswlen='';
-	public $lowAge='';
-	public $unconfirmedPsw='';
+	public $login;
+	public $password;
+	public $confirmPassword;
+	public $username;
+	public $age;
+	public $sex;
+	public $invalidPswlen;
+	public $lowAge;
+	public $unconfirmedPsw;
 	//коснтруируем объект на основе класса, получаем все переменные
 	public function __construct($login, $password, $confirmPassword, $username, $age, $sex){
 		$this->login = $login;
