@@ -3,64 +3,64 @@ class User
 {
 	public $login='';
 	public $password='';
-	public $confirm_password='';
+	public $confirmPassword='';
 	public $username='';
 	public $age=0;
 	public $sex='';
-	public $invalid_psw_len='';
-	public $low_age='';
-	public $unconfirmed_psw='';
+	public $invalidPswlen='';
+	public $lowAge='';
+	public $unconfirmedPsw='';
 	//коснтруируем объект на основе класса, получаем все переменные
-	public function __construct($login,$password,$confirm_password,$username,$age,$sex){
+	public function __construct($login, $password, $confirmPassword, $username, $age, $sex){
 		$this->login = $login;
 		$this->password = $password;
-		$this->confirm_password = $confirm_password;
+		$this->confirmPassword = $confirmPassword;
 		$this->username = $username;
 		$this->age = $age;
 		$this->sex = $sex;
 	}
 	//объявим функцию для каждой проверки введенных данных
 	//функция проверки возраста
-	private function is_valid_age()
+	private function isValidAge()
 	{
 		if ($this->age>=18){
 			return true;
 			}
 		else{
-			$this->low_age = 'you are too young';
+			$this->lowAge = 'you are too young';
 			return false;
 			}
 	}
 
 //функция проверки длины пароля
-	private function is_valid_psw_lenth()
+	private function isValidPswLenth()
 	{
 		if (strlen($this->password) >= 3){
 			return true;
 			}
 		else{
-			$this->invalid_psw_len = 'your password too short';
+			$this->invalidPswlen = 'your password too short';
 			return false;
 			}
 	}
 
 
 //функция совпадения пароля и его подтверждения
-	private function is_valid_psw_conf()
+	private function isValidPswConf()
 	{
-		if ($this->password == $this->confirm_password) {
+		if ($this->password == $this->confirmPassword) {
 			return true;
 		}
 		else {
-			$this->uncofirmed_psw= 'your password is not confirmed';
+			$this->uncofirmedPsw= 'your password is not confirmed';
 			return false;
 		}
 	}
 
 //объявим функцию проверки всех условий 
-	public function valid_data()
+	public function validData()
 	{
-		if ($this->is_valid_age() and $this->is_valid_psw_lenth() and $this->is_valid_psw_conf()) {
+		if ($this->isValidAge() and $this->isValidPswLenth() and $this->isValidPswConf()) {
 			return true;
 		} else {
 			return false;

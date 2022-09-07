@@ -4,11 +4,11 @@ require_once  __DIR__ . '/User.php';
 $user = new User ($_POST["login"],$_POST["password"],$_POST["confirm_password"],
 	$_POST["username"],$_POST["age"],$_POST["sex"]);
 
-// если я правильно понял что нужные переменные получили
-// из формы регистрации свои значения в квадратных скобках и сразу попали в класс
-echo '<pre>';
-var_dump($user);
-echo '</pre>';
+	// если я правильно понял что нужные переменные получили
+	// из формы регистрации свои значения в квадратных скобках и сразу попали в класс
+	//echo '<pre>';
+	//var_dump($user);
+	//echo '</pre>';
 
 
 //создаем функцию подключения и записи в БД
@@ -21,7 +21,9 @@ function connectToBd()
 	$dbTable = "user"; // Имя Таблицы БД
 	try {
 		// Подключение к базе данных, используем адрес БД (локальный в данном случае) логин и пароль от mysql,  того что в моем openserver
+		// теперь я понял что $db - объект класса PDO!
 		$db = new PDO("mysql:host=$dbHost;dbname=$dbBase", $dbUser, $dbPassword);
+		// мы создали объект объект класса PDO под названием $db
 
 
 		// Устанавливаем корректную кодировку (не знаю зачем скопировал из учебника как есть)
@@ -74,7 +76,7 @@ function wrToUsers1($user, $db)
 
 }
 
-if ($user->valid_data()) {
+if ($user->validData()) {
 	$db = connectToBd();
 	wrToUsers1($user, $db);
 }
