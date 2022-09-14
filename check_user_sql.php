@@ -16,5 +16,4 @@ var_dump($result);
 echo '</pre>';
 if ($user->password == $result['password']){
 	print 'Поздравляю вы прошли авторизацию';
-}
 ?>
