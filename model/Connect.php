@@ -30,7 +30,6 @@ class Connect
         }
 
         if ($result) {
-            echo 'your data sent in SQL database see your table';
             return $db;}
         else {
             return NULL;
