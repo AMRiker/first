@@ -8,3 +8,6 @@ echo '<pre>';
 if ($_SERVER ['REQUEST_URI'] == '/index.php/registration'){
         require_once __DIR__ . '/reg_new_to_sql.php';
 }
+if ($_SERVER ['REQUEST_URI'] == '/index.php/enter'){
+    require_once __DIR__ . '/check_user_sql.php';
+}
