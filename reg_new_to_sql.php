@@ -1,6 +1,6 @@
 <?php
-require_once  __DIR__ . '/User.php';
-require_once  __DIR__ . '/Connect.php';
+require_once  __DIR__ . '/model/User.php';
+require_once  __DIR__ . '/model/Connect.php';
 //создаем ноывый объект типа user
 $user = new User ();
 $user-> fill(

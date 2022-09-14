@@ -1,6 +1,6 @@
 <?php
-require_once  __DIR__ . '/Connect.php';
-require_once  __DIR__ . '/User.php';
+require_once  __DIR__ . '/model/Connect.php';
+require_once  __DIR__ . '/model/User.php';
 $user = new User();
 $user->login = $_POST["login"];
 $user->password=$_POST["password"];
