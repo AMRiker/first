@@ -52,7 +52,7 @@ if ($user->validData()) {
 	wrToUsers1($user, $db);
 }
 else {
-	include __DIR__ . '/reg_error.php';
+	include __DIR__ . '/view/reg_error.php';
 }
 ?>
 
