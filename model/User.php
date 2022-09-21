@@ -67,6 +67,30 @@ class User
 		}
 
 	}
+
+//функция для записи в базу данных
+	public function wrToUsers1($db) // todo: убрал ее в класс user
+	{
+
+		// инициализируем ряд переменных для подключения к базе sql
+			$usersData = [
+			'login' => $this->login,
+			'password' => $this->password,
+			'name' => $this->username,
+			'age' => $this->age,
+			'sex' => $this->sex
+		];
+
+		echo '<pre>';
+		var_dump($usersData);
+		echo '</pre>';
+
+		$query = $db->prepare ("INSERT INTO user (login, password, name, age, sex) values (:login, :password, :name, :age, :sex)");
+
+		// Выполняем запрос с данными
+		$query->execute($usersData);
+
+	}
 }
 ?>
 

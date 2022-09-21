@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../User.php';
+require_once __DIR__ . '/../model/User.php';
 echo $user->invalidPswlen;
 echo $user->lowAge;
 echo $user->unconfirmedPsw;

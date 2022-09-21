@@ -12,7 +12,7 @@ class Connect
         try {
             // Подключение к базе данных, используем адрес БД (локальный в данном случае) логин и пароль от mysql,  того что в моем openserver
             // теперь я понял что $db - объект класса PDO!
-            $db = new PDO("mysql:host=$dbHost;dbname=$dbBase", $dbUser, $dbPassword);
+            $db = new \PDO("mysql:host=$dbHost;dbname=$dbBase", $dbUser, $dbPassword);
             // мы создали объект объект класса PDO под названием $db
 
 
