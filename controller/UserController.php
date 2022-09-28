@@ -43,26 +43,11 @@ class UserController
 
         if ($user->password == $result['password']){
             include __DIR__ . '/../view/postForm.html';
+            $_SESSION['userId'] = $result['id'];
         }
         else {
             print 'неправльный логин или пароль';
         }
     }
-    public function actionWritePost()
-    {
-        require_once  __DIR__ . '/../model/Connect.php';
-        require_once  __DIR__ . '/../model/User.php';
-        $head = $_POST['head'];
-        $body = $_POST['body'];
-        $user = new \User();
-        $connect = new \Connect();
-        $db = $connect->connectToBd();
-        $postData = [
-            'user_id'=> 17,
-            'head'=> $head,
-            'body'=> $body
-        ];
-        $writePost = $db -> prepare ("INSERT INTO post (user_id, head, body) values (:user_id, :head, :body)");
-        $writePost->execute($postData);
-    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER ['REQUEST_URI'] == '/'){
     require_once __DIR__ . '/view/startPage.html';
 }
@@ -14,7 +15,7 @@ if ($_SERVER ['REQUEST_URI'] == '/index.php/enter'){
 
 }
 if ($_SERVER ['REQUEST_URI'] == '/index.php/writePost') {
-    require_once __DIR__ . '/controller/userController.php';
-    $controller = new \controller\UserController();
+    require_once __DIR__ . '/controller/PostController.php';
+    $controller = new \controller\PostController();
     $controller->actionWritePost();
 }

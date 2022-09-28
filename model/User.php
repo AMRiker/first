@@ -11,7 +11,8 @@ class User
 	public $lowAge;
 	public $unconfirmedPsw;
 	//коснтруируем объект на основе класса, получаем все переменные
-	public function fill($login, $password, $confirmPassword, $username, $age, $sex){
+	public function fill($login, $password, $confirmPassword, $username, $age, $sex)
+	{
 		$this->login = $login;
 		$this->password = $password;
 		$this->confirmPassword = $confirmPassword;
