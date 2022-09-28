@@ -1,14 +1,13 @@
 <?php
 
 namespace controller;
+use model\User;
 
 class UserController
 {
     public function actionRegistration()
     {
-        require_once  __DIR__ . '/../model/User.php';
-        require_once  __DIR__ . '/../model/Connect.php';
-        $user = new \User();
+        $user = new User();
         $user-> fill(
             $_POST["login"],
             $_POST["password"],
@@ -29,9 +28,7 @@ class UserController
     }
     public function actionAuthorisation()
     {
-        require_once  __DIR__ . '/../model/Connect.php';
-        require_once  __DIR__ . '/../model/User.php';
-        $user = new \User();
+        $user = new User();
         $user->login = $_POST["login"];
         $user->password=$_POST["password"];
         $connect = new \Connect();

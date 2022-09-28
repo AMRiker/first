@@ -6,8 +6,6 @@ class PostController
 {
     public function actionWritePost()
     {
-        require_once  __DIR__ . '/../model/Connect.php';
-        require_once  __DIR__ . '/../model/Post.php';
         $post = new \Post($_SESSION['userId'],$_POST['head'],$_POST['body']);
         $connect = new \Connect();
         $db = $connect->connectToBd();

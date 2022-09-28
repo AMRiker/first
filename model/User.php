@@ -1,4 +1,5 @@
 <?php
+namespace model;
 class User
 {
 	public $login;
