@@ -1,5 +1,5 @@
 <?php
-
+namespace model;
 class Connect
 {
     public function connectToBd()

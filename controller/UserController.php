@@ -2,6 +2,7 @@
 
 namespace controller;
 use model\User;
+use model\Connect;
 
 class UserController
 {
@@ -18,7 +19,7 @@ class UserController
         );
 
         if ($user->validData()) {
-            $connect = new \Connect();
+            $connect = new Connect();
             $db = $connect->connectToBd();
             $user->wrToUsers1($db);
         }
@@ -31,7 +32,7 @@ class UserController
         $user = new User();
         $user->login = $_POST["login"];
         $user->password=$_POST["password"];
-        $connect = new \Connect();
+        $connect = new Connect();
         $db = $connect->connectToBd();
         $checkUser = $db -> prepare("SELECT * FROM user WHERE login=:login");
         $checkUser->bindParam("login", $user->login, \PDO::PARAM_STR);
