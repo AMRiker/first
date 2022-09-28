@@ -5,7 +5,7 @@ spl_autoload_register(function ($class_name) {
 });
 session_start();
 if ($_SERVER ['REQUEST_URI'] == '/'){
-    require_once __DIR__ . '/view/startPage.html';
+    require_once __DIR__ . '/view/startPage.php';
 }
 if ($_SERVER ['REQUEST_URI'] == '/index.php/registration'){
         $controller = new \controller\UserController();

@@ -40,7 +40,7 @@ class UserController
         $result = $checkUser->fetch(\PDO::FETCH_ASSOC);
 
         if ($user->password == $result['password']){
-            include __DIR__ . '/../view/postForm.html';
+            include __DIR__ . '/../view/postForm.php';
             $_SESSION['userId'] = $result['id'];
         }
         else {
