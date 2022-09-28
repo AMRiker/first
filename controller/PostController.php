@@ -2,11 +2,12 @@
 
 namespace controller;
 use model\Connect;
+use model\Post;
 class PostController
 {
     public function actionWritePost()
     {
-        $post = new \Post($_SESSION['userId'],$_POST['head'],$_POST['body']);
+        $post = new Post($_SESSION['userId'],$_POST['head'],$_POST['body']);
         $connect = new Connect();
         $db = $connect->connectToBd();
         $postData = [
