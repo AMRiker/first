@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="styleFirst.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.bundle.min.js"></script>
 </style>
 <body>
 <p> Welcome to my first project </p>
