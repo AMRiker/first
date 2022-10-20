@@ -6,23 +6,24 @@ use controller\PostController;
 
 class Router
 {
-    public function run()
+    public static function run()
     {
-        if ($_SERVER ['REQUEST_URI'] == '/'){
+        switch ($_SERVER['REQUEST_URI']){
+            case "/":
             require_once __DIR__ . '/../view/startPage.php';
-        }
-        if ($_SERVER ['REQUEST_URI'] == '/index.php/registration'){
+            break;
+            case '/index.php/registration':
             $controller = new UserController();
             $controller->actionRegistration();
-        }
-        if ($_SERVER ['REQUEST_URI'] == '/index.php/enter'){
+            break;
+            case '/index.php/enter':
             $controller = new UserController();
             $controller->actionAuthorisation();
-
-        }
-        if ($_SERVER ['REQUEST_URI'] == '/index.php/writePost') {
+            break;
+            case '/index.php/writePost':
             $controller = new PostController();
             $controller->actionWritePost();
+            break;
         }
     }
 }

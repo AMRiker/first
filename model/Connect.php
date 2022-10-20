@@ -7,8 +7,8 @@ class Connect
         $dbHost = "localhost";
         $dbUser = "root"; // Логин БД
         $dbPassword = "root"; // Пароль БД
-        $dbBase = 'users1'; // Имя БД
-        $dbTable = "user"; // Имя Таблицы БД
+        $dbBase = 'first'; // Имя БД
+
         try {
             // Подключение к базе данных, используем адрес БД (локальный в данном случае) логин и пароль от mysql,  того что в моем openserver
             // теперь я понял что $db - объект класса PDO!
