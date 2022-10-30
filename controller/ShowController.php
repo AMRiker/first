@@ -7,6 +7,7 @@ class ShowController
     public function actionShow()
     {
         $show = new Show();
-        return $show->show();
+        $posts = $show->show();
+        include __DIR__ . '/../view/ShowForm.php';
     }
 }
