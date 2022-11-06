@@ -11,4 +11,14 @@ class Post
         $this->head = $head;
         $this->body = $body;
     }
+   public static function getPosts()
+   {
+       $connect = new Connect();
+       $db = $connect->connectToBd();
+       $show = $db->prepare('SELECT user.name, post.head, post.body FROM `user`
+                                    JOIN `post` ON user.id = post.user_id;');
+       $show->execute();
+       $result = $show->fetchAll();
+       return $result;
+   }
 }

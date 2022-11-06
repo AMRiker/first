@@ -10,10 +10,6 @@
 </head>
 <body class="text-secondary">
 <?php
-echo '<pre>';
-var_dump($posts);
-echo '</pre>';
-
 foreach ($posts as $post){
     ?> <p>
         <span> <?php echo $post['name']; ?></span>

@@ -1,7 +1,6 @@
 <?php
 namespace component;
 
-use controller\ShowController;
 use controller\UserController;
 use controller\PostController;
 
@@ -26,7 +25,7 @@ class Router
             $controller->actionWritePost();
             break;
             case '/index.php/ShowForm':
-                $controller = new ShowController();
+                $controller = new PostController();
                 $controller->actionShow();
                 break;
         }

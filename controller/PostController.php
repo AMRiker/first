@@ -3,6 +3,8 @@
 namespace controller;
 use model\Connect;
 use model\Post;
+
+
 class PostController
 {
     public function actionWritePost()
@@ -18,4 +20,10 @@ class PostController
         $writePost = $db -> prepare ("INSERT INTO post (user_id, head, body) values (:user_id, :head, :body)");
         $writePost->execute($postData);
     }
+    public function actionShow()
+    {
+        $posts = Post::getPosts();
+        include __DIR__ . '/../view/ShowForm.php';
+    }
+
 }
