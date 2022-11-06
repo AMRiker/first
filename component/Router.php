@@ -28,6 +28,9 @@ class Router
                 $controller = new PostController();
                 $controller->actionShow();
                 break;
+            case '/index.php/getPosts':
+                PostController::getAllPosts();
+                break;
         }
     }
 }

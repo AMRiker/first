@@ -25,5 +25,9 @@ class PostController
         $posts = Post::getPosts();
         include __DIR__ . '/../view/ShowForm.php';
     }
-
+    public static function getAllPosts()
+    {
+        $posts = Post::getPosts();
+        echo json_encode($posts, JSON_UNESCAPED_UNICODE);
+    }
 }
