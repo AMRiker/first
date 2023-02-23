@@ -24,7 +24,7 @@ class UserController
             $user->wrToUsers1($db);
         }
         else {
-            include __DIR__ . '/../view/regError.php';
+            require_once('/../view/regError.php');
         }
     }
     public function actionAuthorisation()
@@ -39,7 +39,7 @@ class UserController
         $checkUser->execute();
         $result = $checkUser->fetch(\PDO::FETCH_ASSOC);
 
-        if ($user->password == $result['password']){
+        if (password_verify($user->login.$user->password, $result['password'])){
             include __DIR__ . '/../view/postForm.php';
             $_SESSION['userId'] = $result['id'];
         }

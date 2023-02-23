@@ -2,6 +2,7 @@
 namespace model;
 class User
 {
+	//объявим все переменные
 	public $login;
 	public $password;
 	public $confirmPassword;
@@ -11,6 +12,14 @@ class User
 	public $invalidPswlen;
 	public $lowAge;
 	public $unconfirmedPsw;
+
+
+	//объявим функцию хэширования пароля
+	public function hashedPassword($login, $password)
+	{
+		return password_hash($login.$password, PASSWORD_DEFAULT);
+	}
+
 	//коснтруируем объект на основе класса, получаем все переменные
 	public function fill($login, $password, $confirmPassword, $username, $age, $sex)
 	{
@@ -21,8 +30,11 @@ class User
 		$this->age = $age;
 		$this->sex = $sex;
 	}
+
 	//объявим функцию для каждой проверки введенных данных
+	//
 	//функция проверки возраста
+
 	private function isValidAge()
 	{
 		if ($this->age>=18){
@@ -34,7 +46,7 @@ class User
 			}
 	}
 
-//функция проверки длины пароля
+	//функция проверки длины пароля
 	private function isValidPswLenth()
 	{
 		if (strlen($this->password) >= 3){
@@ -47,7 +59,7 @@ class User
 	}
 
 
-//функция совпадения пароля и его подтверждения
+	//функция совпадения пароля и его подтверждения
 	private function isValidPswConf()
 	{
 		if ($this->password == $this->confirmPassword) {
@@ -59,7 +71,7 @@ class User
 		}
 	}
 
-//объявим функцию проверки всех условий 
+	//объявим функцию проверки всех условий
 	public function validData()
 	{
 		if ($this->isValidAge() and $this->isValidPswLenth() and $this->isValidPswConf()) {
@@ -70,14 +82,15 @@ class User
 
 	}
 
-//функция для записи в базу данных
+	//функция для записи в базу данных
 	public function wrToUsers1($db) // todo: убрал ее в класс user
 	{
+			//формируем хэш пароля, который будет храниться в БД
+			$safety_password = $this->hashedPassword($this->login, $this->password);
 
-		// инициализируем ряд переменных для подключения к базе sql
 			$usersData = [
 			'login' => $this->login,
-			'password' => $this->password,
+			'password' => $safety_password,
 			'name' => $this->username,
 			'age' => $this->age,
 			'sex' => $this->sex
@@ -93,6 +106,7 @@ class User
 		$query->execute($usersData);
 
 	}
+
 }
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-echo $user->invalidPswlen;
-echo $user->lowAge;
-echo $user->unconfirmedPsw;
-echo "<a href='startPage.php'> try again </a>";
+echo $user->invalidPswlen.$user->lowAge.$user->unconfirmedPsw."\n";
+echo "\n";
+echo "\n";
+echo "<a href='/../view/startPage.php'> try again </a>";
 ?>
