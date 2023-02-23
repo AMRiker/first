@@ -1,0 +1,3 @@
+[submodule "php-csrf"]
+	path = php-csrf
+	url = https://github.com/AMRiker/php-csrf.git
